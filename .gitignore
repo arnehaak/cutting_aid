@@ -1,0 +1,9 @@
+# Ignore build artifacts
+/cutting_aid.aux
+/cutting_aid.dvi
+/cutting_aid.log
+/cutting_aid.out
+/cutting_aid.pdf
+/cutting_aid.out.pyg
+/cutting_aid.synctex(busy)
+/cutting_aid.synctex.gz

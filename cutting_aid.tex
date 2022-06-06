@@ -1,0 +1,34 @@
+% !TEX TS-program = luatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[tikz]{standalone}
+
+% Conditional compilation, as some things are not compatible with LuaTeX
+\usepackage{ifluatex} 
+
+\ifluatex
+  % Ok, we are using LuaTex.
+\else
+  \PackageError{SanityCheck}{Detected a non-LuaTeX compiler.}{Only LuaTeX is supported!}
+\fi
+
+
+\directlua{cuttingaid = require("Lua/cuttingaid.lua")}
+\newcommand*{\rendercuttingaid}[4]{\directlua{cuttingaid.rendercuttingaid("#1", #2, #3, #4)}} 
+
+\usetikzlibrary{shapes}
+
+
+\begin{document}
+
+\begin{tikzpicture}[yscale=-1]
+%
+% Render custom cutting aid. Parameters:
+%   #1: Title (helps to tell cutting aids apart in case multiple ones are used)
+%   #2: Target width [mm]
+%   #3: Target height [mm]
+%   #4: Margin around target [mm] 
+\rendercuttingaid{Thinkpad P50 CPU}{13.5}{9.5}{50}
+\end{tikzpicture}
+
+\end{document}
